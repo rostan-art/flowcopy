@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-// ─── PERSONAS ────────────────────────────────────────────────────────────────
 const PERSONAS = [
   {
     id: "coach",
@@ -16,8 +15,7 @@ const PERSONAS = [
         label: "Présenter mon offre",
         placeholder: "Ex: accompagnement burnout en 8 semaines",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en copywriting pour coachs et thérapeutes. Rédige une présentation d'offre authentique et persuasive pour : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.
-La présentation doit : parler directement à la douleur du client idéal, expliquer la transformation (avant/après), donner confiance sans être vendeur agressif, rester humaine et sincère. Format : accroche émotionnelle, description de la transformation, ce que contient l'offre (bullet points courts), phrase de clôture invitante. 200-250 mots.`,
+          `Tu es un expert en copywriting pour coachs et thérapeutes. Rédige une présentation d'offre authentique et persuasive pour : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.\nLa présentation doit : parler directement à la douleur du client idéal, expliquer la transformation (avant/après), donner confiance sans être vendeur agressif, rester humaine et sincère. Format : accroche émotionnelle, description de la transformation, ce que contient l'offre (bullet points courts), phrase de clôture invitante. 200-250 mots.`,
       },
       {
         id: "instagram",
@@ -25,8 +23,7 @@ La présentation doit : parler directement à la douleur du client idéal, expli
         label: "Post Instagram / Reel caption",
         placeholder: "Ex: l'importance de poser ses limites au travail",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en contenu Instagram pour coachs bien-être. Écris une caption Instagram engageante sur : "${topic}". Ton : ${tone}. Infos : ${extra || "aucune"}.
-Structure : 1 phrase d'accroche qui arrête le scroll, développement en 3-4 lignes courtes, question pour générer des commentaires, 5 hashtags pertinents bien-être/coaching FR. Style : authentique, incarné, pas corporate. Max 150 mots + hashtags.`,
+          `Tu es un expert en contenu Instagram pour coachs bien-être. Écris une caption Instagram engageante sur : "${topic}". Ton : ${tone}. Infos : ${extra || "aucune"}.\nStructure : 1 phrase d'accroche qui arrête le scroll, développement en 3-4 lignes courtes, question pour générer des commentaires, 5 hashtags pertinents bien-être/coaching FR. Style : authentique, incarné, pas corporate. Max 150 mots + hashtags.`,
       },
       {
         id: "newsletter",
@@ -34,8 +31,7 @@ Structure : 1 phrase d'accroche qui arrête le scroll, développement en 3-4 lig
         label: "Email / Newsletter",
         placeholder: "Ex: comment retrouver de l'énergie le matin",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en email marketing pour indépendants bien-être. Rédige un email de newsletter sur : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.
-L'email doit : commencer par une histoire personnelle ou une observation concrète, apporter 1 conseil vraiment actionnable, se terminer par une invitation douce (pas un pitch agressif). Objet : accrocheur et personnel. Corps : 180-220 mots, très lisible, paragraphes courts.`,
+          `Tu es un expert en email marketing pour indépendants bien-être. Rédige un email de newsletter sur : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.\nL'email doit : commencer par une histoire personnelle ou une observation concrète, apporter 1 conseil vraiment actionnable, se terminer par une invitation douce (pas un pitch agressif). Objet : accrocheur et personnel. Corps : 180-220 mots, très lisible, paragraphes courts.`,
       },
       {
         id: "temoignage",
@@ -43,8 +39,7 @@ L'email doit : commencer par une histoire personnelle ou une observation concrè
         label: "Mise en valeur d'un témoignage",
         placeholder: "Ex: cliente a retrouvé confiance en elle après 3 mois",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en social proof et storytelling. Transforme ce résultat client en contenu percutant : "${topic}". Ton : ${tone}. Contexte : ${extra || "aucun"}.
-Crée : 1 post LinkedIn/Instagram qui raconte la transformation de façon humaine (sans divulguer d'infos privées), en montrant le chemin parcouru. Inclure : la situation de départ, le tournant, le résultat, une phrase inspirante. 120-150 mots.`,
+          `Tu es un expert en social proof et storytelling. Transforme ce résultat client en contenu percutant : "${topic}". Ton : ${tone}. Contexte : ${extra || "aucun"}.\nCrée : 1 post LinkedIn/Instagram qui raconte la transformation de façon humaine (sans divulguer d'infos privées), en montrant le chemin parcouru. Inclure : la situation de départ, le tournant, le résultat, une phrase inspirante. 120-150 mots.`,
       },
       {
         id: "linkedin_coach",
@@ -52,8 +47,7 @@ Crée : 1 post LinkedIn/Instagram qui raconte la transformation de façon humain
         label: "Post LinkedIn expert",
         placeholder: "Ex: pourquoi 80% des burnouts sont évitables",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert LinkedIn pour coachs et thérapeutes. Rédige un post LinkedIn à forte valeur ajoutée sur : "${topic}". Ton : ${tone}. Infos : ${extra || "aucune"}.
-Format : accroche choc en 1-2 lignes, développement structuré avec retours à la ligne fréquents, 1 insight actionnable, CTA pour engager la conversation. Emojis sobres. 180-220 mots.`,
+          `Tu es un expert LinkedIn pour coachs et thérapeutes. Rédige un post LinkedIn à forte valeur ajoutée sur : "${topic}". Ton : ${tone}. Infos : ${extra || "aucune"}.\nFormat : accroche choc en 1-2 lignes, développement structuré avec retours à la ligne fréquents, 1 insight actionnable, CTA pour engager la conversation. Emojis sobres. 180-220 mots.`,
       },
     ],
   },
@@ -71,8 +65,7 @@ Format : accroche choc en 1-2 lignes, développement structuré avec retours à 
         label: "Fiche produit",
         placeholder: "Ex: bougie artisanale lavande & bois de cèdre",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en copywriting e-commerce. Rédige une fiche produit convaincante pour : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.
-Structure : titre SEO accrocheur, accroche sensorielle ou émotionnelle (2 lignes), 4-5 bénéfices clés en bullet points (bénéfice > caractéristique), description d'usage concret, phrase de clôture qui donne envie d'acheter maintenant. 180-220 mots.`,
+          `Tu es un expert en copywriting e-commerce. Rédige une fiche produit convaincante pour : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.\nStructure : titre SEO accrocheur, accroche sensorielle ou émotionnelle (2 lignes), 4-5 bénéfices clés en bullet points (bénéfice > caractéristique), description d'usage concret, phrase de clôture qui donne envie d'acheter maintenant. 180-220 mots.`,
       },
       {
         id: "pub",
@@ -80,8 +73,7 @@ Structure : titre SEO accrocheur, accroche sensorielle ou émotionnelle (2 ligne
         label: "Pub Facebook / Instagram",
         placeholder: "Ex: carnet de gratitude illustré fait main",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en publicité Facebook/Instagram pour e-commerçants. Crée 3 variantes d'annonces publicitaires pour : "${topic}". Ton : ${tone}. Infos : ${extra || "aucun"}.
-Variante 1 : accroche problème/solution. Variante 2 : accroche émotionnelle/aspirationnelle. Variante 3 : accroche preuve sociale/urgence. Chaque variante : 1 titre (max 40 car.), 1 texte principal (max 90 mots), 1 CTA.`,
+          `Tu es un expert en publicité Facebook/Instagram pour e-commerçants. Crée 3 variantes d'annonces publicitaires pour : "${topic}". Ton : ${tone}. Infos : ${extra || "aucun"}.\nVariante 1 : accroche problème/solution. Variante 2 : accroche émotionnelle/aspirationnelle. Variante 3 : accroche preuve sociale/urgence. Chaque variante : 1 titre (max 40 car.), 1 texte principal (max 90 mots), 1 CTA.`,
       },
       {
         id: "email_promo",
@@ -89,8 +81,7 @@ Variante 1 : accroche problème/solution. Variante 2 : accroche émotionnelle/as
         label: "Email promotionnel",
         placeholder: "Ex: soldes de printemps -20% sur toute la collection",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en email marketing e-commerce. Rédige un email promotionnel pour : "${topic}". Ton : ${tone}. Contexte : ${extra || "aucun"}.
-L'email doit créer de l'urgence sans paraître désespéré, mettre en avant la valeur plutôt que la réduction seule, raconter pourquoi cette promo existe (histoire courte). Objet + préheader accrocheurs. Corps : 150-180 mots. CTA fort et visible.`,
+          `Tu es un expert en email marketing e-commerce. Rédige un email promotionnel pour : "${topic}". Ton : ${tone}. Contexte : ${extra || "aucun"}.\nL'email doit créer de l'urgence sans paraître désespéré, mettre en avant la valeur plutôt que la réduction seule, raconter pourquoi cette promo existe (histoire courte). Objet + préheader accrocheurs. Corps : 150-180 mots. CTA fort et visible.`,
       },
       {
         id: "about_ecom",
@@ -98,8 +89,7 @@ L'email doit créer de l'urgence sans paraître désespéré, mettre en avant la
         label: "Page À propos / Histoire de marque",
         placeholder: "Ex: créatrice de bijoux minimalistes en argent recyclé",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en brand storytelling pour créateurs indépendants. Rédige une page À propos authentique pour : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.
-Structure : accroche identitaire forte, histoire de la création (le pourquoi, pas le quoi), valeurs incarnées (2-3 max), vision/mission en 1 phrase, invitation à rejoindre l'aventure. 200-240 mots. Style : chaleureux, sincère, différenciant.`,
+          `Tu es un expert en brand storytelling pour créateurs indépendants. Rédige une page À propos authentique pour : "${topic}". Ton : ${tone}. Détails : ${extra || "aucun"}.\nStructure : accroche identitaire forte, histoire de la création (le pourquoi, pas le quoi), valeurs incarnées (2-3 max), vision/mission en 1 phrase, invitation à rejoindre l'aventure. 200-240 mots. Style : chaleureux, sincère, différenciant.`,
       },
       {
         id: "review",
@@ -107,8 +97,7 @@ Structure : accroche identitaire forte, histoire de la création (le pourquoi, p
         label: "Réponse à un avis client",
         placeholder: "Ex: avis 5 étoiles sur la qualité des matériaux",
         prompt: (topic, tone, extra) =>
-          `Tu es un expert en community management e-commerce. Rédige une réponse à cet avis client : "${topic}". Ton : ${tone}. Contexte : ${extra || "aucun"}.
-La réponse doit : remercier sincèrement (sans être robotique), personnaliser selon le contenu de l'avis, renforcer un élément de la promesse de marque, inviter à revenir. Max 80 mots. Chaleureux et humain.`,
+          `Tu es un expert en community management e-commerce. Rédige une réponse à cet avis client : "${topic}". Ton : ${tone}. Contexte : ${extra || "aucun"}.\nLa réponse doit : remercier sincèrement (sans être robotique), personnaliser selon le contenu de l'avis, renforcer un élément de la promesse de marque, inviter à revenir. Max 80 mots. Chaleureux et humain.`,
       },
     ],
   },
@@ -133,7 +122,7 @@ export default function FlowCopy() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
-  const [step, setStep] = useState(1); // 1: persona, 2: format+input, 3: result
+  const [step, setStep] = useState(1);
 
   const selectedPersona = PERSONAS.find(p => p.id === persona);
   const selectedFormat = selectedPersona?.formats.find(f => f.id === format);
@@ -156,27 +145,14 @@ export default function FlowCopy() {
     setStep(3);
     try {
       const res = await fetch("/api/generate", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    messages: [{ role: "user", content: selectedFormat.prompt(topic, selectedTone?.label || tone, extra) }],
-  }),
-});
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY,
-    "anthropic-version": "2023-06-01",
-    "anthropic-dangerous-direct-browser-access": "true"
-  },
-  body: JSON.stringify({
-    model: "claude-sonnet-4-6",
-    max_tokens: 1000,
-    messages: [{ role: "user", content: selectedFormat.prompt(topic, selectedTone?.label || tone, extra) }],
-  }),
-});
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: [{ role: "user", content: selectedFormat.prompt(topic, selectedTone?.label || tone, extra) }],
+        }),
+      });
       const data = await res.json();
       const text = data.content?.map(b => b.text || "").join("") || "";
       setResult(text);
@@ -217,15 +193,8 @@ export default function FlowCopy() {
     }}>
       <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Epilogue:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
-      {/* Texture overlay */}
-      <div style={{
-        position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0, opacity: 0.4,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E")`,
-      }} />
-
       <div style={{ position: "relative", zIndex: 1, maxWidth: 780, margin: "0 auto", padding: "48px 24px" }}>
 
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 16,
@@ -242,8 +211,7 @@ export default function FlowCopy() {
           </div>
           <h1 style={{
             fontFamily: "'Epilogue', sans-serif", fontSize: 38, fontWeight: 900,
-            lineHeight: 1.15, margin: "0 0 12px", color: "#1a1814",
-            letterSpacing: -1
+            lineHeight: 1.15, margin: "0 0 12px", color: "#1a1814", letterSpacing: -1
           }}>
             Le copywriting qui<br />
             <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, color: "#6dbf8b" }}>te ressemble.</em>
@@ -253,29 +221,19 @@ export default function FlowCopy() {
           </p>
         </div>
 
-        {/* Step 1 — Persona */}
-        <div style={{
-          opacity: step >= 1 ? 1 : 0.4,
-          transition: "opacity 0.3s",
-          marginBottom: 32
-        }}>
+        <div style={{ opacity: step >= 1 ? 1 : 0.4, transition: "opacity 0.3s", marginBottom: 32 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
             <div style={{
-              width: 28, height: 28, borderRadius: "50%", background: step >= 1 ? "#1a1814" : "#ccc",
+              width: 28, height: 28, borderRadius: "50%", background: "#1a1814",
               display: "flex", alignItems: "center", justifyContent: "center",
               fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 700, color: "#fff"
             }}>1</div>
-            <span style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 0.3 }}>
-              Qui es-tu ?
-            </span>
+            <span style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 0.3 }}>Qui es-tu ?</span>
           </div>
-
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             {PERSONAS.map(p => (
               <button key={p.id} onClick={() => handlePersonaSelect(p.id)} style={{
-                background: persona === p.id
-                  ? `linear-gradient(135deg, ${p.color}22, ${p.accent}33)`
-                  : "rgba(255,255,255,0.8)",
+                background: persona === p.id ? `linear-gradient(135deg, ${p.color}22, ${p.accent}33)` : "rgba(255,255,255,0.8)",
                 border: `2px solid ${persona === p.id ? p.color : "rgba(0,0,0,0.08)"}`,
                 borderRadius: 18, padding: "22px 20px", cursor: "pointer",
                 textAlign: "left", transition: "all 0.25s",
@@ -290,22 +248,17 @@ export default function FlowCopy() {
           </div>
         </div>
 
-        {/* Step 2 — Format + Input */}
         {persona && (
           <div style={{ animation: "slideUp 0.35s ease", marginBottom: 32 }}>
-
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
               <div style={{
                 width: 28, height: 28, borderRadius: "50%", background: "#1a1814",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 700, color: "#fff"
               }}>2</div>
-              <span style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 0.3 }}>
-                Quel contenu veux-tu créer ?
-              </span>
+              <span style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 0.3 }}>Quel contenu veux-tu créer ?</span>
             </div>
 
-            {/* Format grid */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginBottom: 28 }}>
               {selectedPersona.formats.map(f => (
                 <button key={f.id} onClick={() => setFormat(f.id)} style={{
@@ -316,15 +269,11 @@ export default function FlowCopy() {
                   transform: format === f.id ? "translateY(-1px)" : "none",
                 }}>
                   <div style={{ fontSize: 20, marginBottom: 6 }}>{f.icon}</div>
-                  <div style={{
-                    fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 600,
-                    color: format === f.id ? c : "#555", lineHeight: 1.3
-                  }}>{f.label}</div>
+                  <div style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 600, color: format === f.id ? c : "#555", lineHeight: 1.3 }}>{f.label}</div>
                 </button>
               ))}
             </div>
 
-            {/* Tone */}
             <div style={{ marginBottom: 20 }}>
               <p style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>Ton</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -340,11 +289,8 @@ export default function FlowCopy() {
               </div>
             </div>
 
-            {/* Topic input */}
             <div style={{ marginBottom: 16 }}>
-              <p style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>
-                Ton sujet *
-              </p>
+              <p style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 10 }}>Ton sujet *</p>
               <textarea
                 value={topic}
                 onChange={e => setTopic(e.target.value)}
@@ -390,12 +336,11 @@ export default function FlowCopy() {
               letterSpacing: 0.3, transition: "all 0.25s",
               boxShadow: topic.trim() && format && !loading ? `0 6px 24px ${c}40` : "none",
             }}>
-              {loading ? "Génération en cours…" : `✨ Générer mon contenu`}
+              {loading ? "Génération en cours…" : "✨ Générer mon contenu"}
             </button>
           </div>
         )}
 
-        {/* Step 3 — Result */}
         {(result || loading) && (
           <div style={{ animation: "slideUp 0.4s ease" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
@@ -404,15 +349,11 @@ export default function FlowCopy() {
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontFamily: "'Epilogue', sans-serif", fontSize: 12, fontWeight: 700, color: "#fff"
               }}>3</div>
-              <span style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 0.3 }}>
-                Ton contenu
-              </span>
+              <span style={{ fontFamily: "'Epilogue', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 0.3 }}>Ton contenu</span>
             </div>
-
             <div style={{
               background: "rgba(255,255,255,0.9)", border: `1.5px solid ${c}50`,
-              borderRadius: 20, padding: 28,
-              boxShadow: `0 8px 32px ${c}20`
+              borderRadius: 20, padding: 28, boxShadow: `0 8px 32px ${c}20`
             }}>
               {loading ? (
                 <div style={{ display: "flex", alignItems: "center", gap: 12, color: "#aaa", fontStyle: "italic" }}>
@@ -426,16 +367,8 @@ export default function FlowCopy() {
                 <>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
                     <div style={{ display: "flex", gap: 8 }}>
-                      <span style={{
-                        background: `${c}20`, color: c, borderRadius: 20,
-                        padding: "3px 12px", fontSize: 12,
-                        fontFamily: "'Epilogue', sans-serif", fontWeight: 600
-                      }}>{selectedFormat?.icon} {selectedFormat?.label}</span>
-                      <span style={{
-                        background: "rgba(0,0,0,0.05)", color: "#888", borderRadius: 20,
-                        padding: "3px 12px", fontSize: 12,
-                        fontFamily: "'Epilogue', sans-serif"
-                      }}>{selectedTone?.emoji} {selectedTone?.label}</span>
+                      <span style={{ background: `${c}20`, color: c, borderRadius: 20, padding: "3px 12px", fontSize: 12, fontFamily: "'Epilogue', sans-serif", fontWeight: 600 }}>{selectedFormat?.icon} {selectedFormat?.label}</span>
+                      <span style={{ background: "rgba(0,0,0,0.05)", color: "#888", borderRadius: 20, padding: "3px 12px", fontSize: 12, fontFamily: "'Epilogue', sans-serif" }}>{selectedTone?.emoji} {selectedTone?.label}</span>
                     </div>
                     <button onClick={copy} style={{
                       background: copied ? "#50a87020" : "rgba(0,0,0,0.04)",
@@ -445,25 +378,17 @@ export default function FlowCopy() {
                       color: copied ? "#50a870" : "#888", cursor: "pointer", transition: "all 0.2s"
                     }}>{copied ? "✓ Copié !" : "Copier"}</button>
                   </div>
-                  <div style={{
-                    fontFamily: "'Lora', serif", fontSize: 15, lineHeight: 1.85,
-                    color: "#2d2a25", whiteSpace: "pre-wrap",
-                    borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: 20
-                  }}>
+                  <div style={{ fontFamily: "'Lora', serif", fontSize: 15, lineHeight: 1.85, color: "#2d2a25", whiteSpace: "pre-wrap", borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: 20 }}>
                     {result}
                   </div>
                   <div style={{ marginTop: 24, display: "flex", gap: 10 }}>
                     <button onClick={generate} style={{
-                      flex: 1, padding: "12px",
-                      background: `${c}15`, border: `1.5px solid ${c}40`,
-                      borderRadius: 12, cursor: "pointer",
-                      fontFamily: "'Epilogue', sans-serif", fontSize: 13, fontWeight: 700, color: c
+                      flex: 1, padding: "12px", background: `${c}15`, border: `1.5px solid ${c}40`,
+                      borderRadius: 12, cursor: "pointer", fontFamily: "'Epilogue', sans-serif", fontSize: 13, fontWeight: 700, color: c
                     }}>↺ Regénérer</button>
                     <button onClick={reset} style={{
-                      flex: 1, padding: "12px",
-                      background: "rgba(0,0,0,0.04)", border: "1.5px solid rgba(0,0,0,0.08)",
-                      borderRadius: 12, cursor: "pointer",
-                      fontFamily: "'Epilogue', sans-serif", fontSize: 13, fontWeight: 700, color: "#888"
+                      flex: 1, padding: "12px", background: "rgba(0,0,0,0.04)", border: "1.5px solid rgba(0,0,0,0.08)",
+                      borderRadius: 12, cursor: "pointer", fontFamily: "'Epilogue', sans-serif", fontSize: 13, fontWeight: 700, color: "#888"
                     }}>+ Nouveau contenu</button>
                   </div>
                 </>
@@ -478,7 +403,6 @@ export default function FlowCopy() {
           </div>
         )}
 
-        {/* Footer */}
         <div style={{ marginTop: 56, textAlign: "center" }}>
           <p style={{ fontSize: 13, color: "#ccc", fontFamily: "'Lora', serif", fontStyle: "italic" }}>
             FlowCopy · Pour les indépendants qui ont quelque chose à dire 🌿
